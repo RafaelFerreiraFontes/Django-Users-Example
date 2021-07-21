@@ -8,7 +8,6 @@ from pymongo import client_options
 import mongoUltis
 
 
-# Create your views here.
 def index(request):
 
     db, client = mongoUltis.get_db().users, mongoUltis.get_db()
@@ -40,24 +39,16 @@ def users(request):
 
     return render(request, 'Users/users.html', { 'users' : users })
 
-
 def user(request, _id):
     try:
         db, client = mongoUltis.get_db().users, mongoUltis.get_db()
 
         collection = db.Users
-
-        print(_id)
-
         user = loads( dumps( collection.find_one( {'_id' : ObjectId(_id) , } ) ) )
-
-        print(user)
 
         user['id'] = str(user['_id'])
 
         client.close()
-    
-        print(user)
 
     except:
         raise Http404("User does not Exist")
