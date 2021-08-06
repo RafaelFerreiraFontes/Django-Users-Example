@@ -33,6 +33,14 @@ def users(request):
         users = loads( dumps( list( collection.find({}) ) ) )
 
         client.close()
+
+        for i in range(0 , len(users)):
+        
+            users[i]['id'] = str(users[i]['_id'])
+            
+            date_info = users[i]['date'].split('-')
+
+            users[i]['date'] = { 'dia': date_info[2], 'mes': date_info[1], 'ano': date_info[0]}
     
     except:
         raise Http404("Can't load db info")
@@ -49,6 +57,10 @@ def user(request, _id):
         user['id'] = str(user['_id'])
 
         client.close()
+
+        date_info = user['date'].split('-')
+
+        user['date'] = { 'dia': date_info[2], 'mes': date_info[1], 'ano': date_info[0]}
 
     except:
         raise Http404("User does not Exist")

@@ -1,8 +1,28 @@
-<h1>Users<h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-<ul>
-    {% for user in users %}
-        <a href="{% url  'Users:user' user.id %}"> <li> {{ user.username }} </li> </a>
-    {% endfor %}
-        <a href="users/"> <li> All </li> </a>
-<ul>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'Users/index.css' %}">
+    
+    <title>HomePage</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="title">Users</h1>
+    
+        {% for user in users %}
+        
+            <a href="{% url  'Users:user' user.id %}"> <div class="element"> {{ user.username }} </div> </a>
+
+        {% endfor %}
+            <a href="users/"> <div class="all_elements"> All </div> </a>
+    </div>
+
+</body>
+</html>

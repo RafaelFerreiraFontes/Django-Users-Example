@@ -1,4 +1,58 @@
-<table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'Users/users.css' %}">
+
+    <title>Users Table</title>
+</head>
+<body>
+    <div class="container">
+
+        <div id="box-table">       
+
+                <table id="user-table"> 
+                        <tr class="box-table" style="background-color: #8a2be2; color: #fff;">
+                            <th>ID</th>
+
+                            <th>UserName</th>
+            
+                            <th>Email</th>
+                            
+                            <th>Date</th>
+                            
+                            <th>Password</th>
+                        </tr>
+            
+                        {% for user in users %}
+                        
+                            <tr class="box-table">
+                                
+                                <td> {{ user.id }} </td>
+        
+                                <td> {{ user.username }} </td>
+        
+                                <td> {{ user.email }} </td>
+                                
+                                <td> {{ user.date.dia }} &#47; {{ user.date.mes }} &#47; {{ user.date.ano }} </td>
+                                
+                                <td> {{ user.password }} </td>
+        
+                            </tr>
+                        
+                        {% endfor %}
+                </table>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<!-- <table>
     <tr>
         <th>Name</th>
         <th>Email</th>
@@ -11,4 +65,4 @@
             <td>{{ user.date }}</td>
         </tr>
     {% endfor %}
-</table>
+</table> -->
